@@ -1,0 +1,16 @@
+<div class="header">
+    <h1>Calculadora de sueldo neto</h1>
+    <p>Ingrese los datos solicitados para realizar los cálculos</p>
+</div>
+<label>Sueldo base:</label>
+<input type="number" [(ngModel)]="sueldo">
+<button (click)="calcular()" [hidden]="sueldo_neto > 0">Calcular</button>
+<button (click)="inicializar()" [hidden]="sueldo_neto <= 0">Calcular nuevamente</button>
+
+<div *ngIf="sueldo_neto > 0; else invalido">
+    <p>Su sueldo neto es: {{sueldo_neto}}. Sus descuentos son los siguientes:</p>
+    <p>ISSS: {{sueldo_isss}}</p>
+    <p>Renta: {{sueldo_renta}}</p>
+    <p>AFP: {{sueldo_afp}}</p>
+</div>
+<ng-template #invalido><p>Por favor ingrese datos válidos.</p></ng-template>
